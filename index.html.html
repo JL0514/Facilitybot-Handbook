@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agila Subic Facility Management Handbook</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        accent: '#06b6d4',
+                        success: '#10b981',
+                        warning: '#f59e0b',
+                        danger: '#ef4444'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s ease-in-out infinite',
+                        'bounce-subtle': 'bounceSubtle 2s ease-in-out infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glass-effect {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chapter-content {
+            line-height: 1.8;
+        }
+        
+        .chapter-content h1 {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .chapter-content h2 {
+            color: #374151;
+            font-size: 1.875rem;
+            font-weight: 600;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .dark .chapter-content h2 {
+            color: #f3f4f6;
+        }
+        
+        .chapter-content h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 2px;
+        }
+        
+        .chapter-content h3 {
+            color: #4b5563;
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .dark .chapter-content h3 {
+            color: #d1d5db;
+        }
+        
+        .chapter-content p {
+            margin-bottom: 1rem;
+            color: #6b7280;
+            line-height: 1.7;
+        }
+        
+        .dark .chapter-content p {
+            color: #d1d5db;
+        }
+        
+        .chapter-content ul, .chapter-content ol {
+            margin-bottom: 1.5rem;
+            margin-left: 1.5rem;
+        }
+        
+        .chapter-content li {
+            margin-bottom: 0.5rem;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        .dark .chapter-content li {
+            color: #d1d5db;
+        }
+
+        .nav-item {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            transform: translateX(4px);
+        }
+        
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .nav-item:hover::before {
+            left: 100%;
+        }
+
+        .sidebar-active {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            transform: translateX(4px);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        @keyframes bounceSubtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .search-highlight {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: white;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .feature-card:hover::before {
+            left: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .feature-icon {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse-slow 3s ease-in-out infinite;
+        }
+        
+        .status-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .status-card:hover {
+            transform: scale(1.02);
+        }
+        
+        .btn-gradient {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border-left: 4px solid transparent;
+            border-image: linear-gradient(135deg, #6366f1, #8b5cf6) 1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .info-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+            z-index: -1;
+        }
+        
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .contact-card {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* QR Code Modal Styles */
+        .qr-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .qr-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .qr-modal-content {
+            background: white;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            position: relative;
+            max-width: 95vw;
+            max-height: 95vh;
+            width: auto;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transform: scale(0.7);
+            transition: transform 0.3s ease;
+            margin: 1rem;
+        }
+        
+        @media (min-width: 640px) {
+            .qr-modal-content {
+                padding: 1.5rem;
+                border-radius: 1rem;
+                max-width: 90vw;
+                max-height: 90vh;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .qr-modal-content {
+                padding: 2rem;
+                max-width: 500px;
+                max-height: 600px;
+            }
+        }
+        
+        .dark .qr-modal-content {
+            background: #1f2937;
+            color: white;
+        }
+        
+        .qr-modal.active .qr-modal-content {
+            transform: scale(1);
+        }
+        
+        .qr-modal-close {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: #ef4444;
+            color: white;
+            border: none;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+        
+        @media (min-width: 640px) {
+            .qr-modal-close {
+                top: 1rem;
+                right: 1rem;
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1.2rem;
+            }
+        }
+        
+        .qr-modal-close:hover {
+            background: #dc2626;
+            transform: scale(1.1);
+        }
+        
+        .qr-enlarged {
+            width: 200px;
+            height: 200px;
+            max-width: calc(100vw - 4rem);
+            max-height: calc(100vh - 8rem);
+            object-fit: contain;
+            image-rendering: crisp-edges;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+        }
+        
+        @media (min-width: 480px) {
+            .qr-enlarged {
+                width: 250px;
+                height: 250px;
+            }
+        }
+        
+        @media (min-width: 640px) {
+            .qr-enlarged {
+                width: 300px;
+                height: 300px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .qr-enlarged {
+                width: 350px;
+                height: 350px;
+            }
+        }
+        
+        .dark .qr-enlarged {
+            border-color: #374151;
+        }
+        
+        .qr-modal-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        @media (min-width: 640px) {
+            .qr-modal-title {
+                font-size: 1.25rem;
+                margin-bottom: 1.5rem;
+                margin-top: 0;
+            }
+        }
+        
+        .qr-modal-text {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-top: 0.75rem;
+            line-height: 1.4;
+            padding: 0 0.5rem;
+        }
+        
+        @media (min-width: 640px) {
+            .qr-modal-text {
+                font-size: 0.875rem;
+                margin-top: 1rem;
+                padding: 0;
+            }
+        }
+        
+        .dark .qr-modal-text {
+            color: #9ca3af;
+        }
+        
+        .qr-clickable {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .qr-clickable:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .qr-clickable::after {
+            content: '🔍';
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #6366f1;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        
+        .qr-clickable:hover::after {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <!-- QR Code Modal -->
+    <div id="qrModal" class="qr-modal">
+        <div class="qr-modal-content">
+            <button class="qr-modal-close" id="qrModalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3 class="qr-modal-title">Scan QR Code</h3>
+            <img id="qrModalImage" src="" alt="QR Code" class="qr-enlarged mx-auto">
+            <p class="qr-modal-text">Scan this QR code with your phone's camera or QR reader app to access AgilaSubic FacilityBot on Viber</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-xl relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-10"></div>
+        <div class="container mx-auto px-6 py-6 relative z-10">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="feature-icon mr-4">
+                        <i class="fas fa-book text-3xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-bold">Agila Subic</h1>
+                        <p class="text-lg font-light opacity-90">Facility Management Handbook</p>
+                    </div>
+                </div>
+                <button id="menuToggle" class="md:hidden glass-effect p-3 rounded-lg hover:bg-white hover:bg-opacity-20 transition-all">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500"></div>
+    </header>
+
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="w-80 bg-gray-50 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out fixed md:relative z-20 h-full overflow-y-auto">
+            <div class="p-6">
+                <h2 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Table of Contents</h2>
+                <nav class="space-y-2">
+                    <button class="nav-item w-full text-left px-4 py-3 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors sidebar-active" data-section="toc">
+                        <i class="fas fa-list mr-3"></i>Overview
+                    </button>
+                    <button class="nav-item w-full text-left px-4 py-3 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-section="visitor">
+                        <i class="fas fa-user-check mr-3"></i>Visitor Entry & Gatepass
+                    </button>
+                    <button class="nav-item w-full text-left px-4 py-3 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-section="service">
+                        <i class="fas fa-tools mr-3"></i>Service Request
+                    </button>
+                    <button class="nav-item w-full text-left px-4 py-3 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-section="hse">
+                        <i class="fas fa-hard-hat mr-3"></i>HSE Induction
+                    </button>
+                    <button class="nav-item w-full text-left px-4 py-3 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-section="faq">
+                        <i class="fas fa-question-circle mr-3"></i>Frequently Asked Questions
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Overlay for mobile -->
+        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-10 hidden md:hidden"></div>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto">
+            <div class="container mx-auto px-6 py-8 max-w-4xl">
+                
+                <!-- Table of Contents Section -->
+                <section id="toc-section" class="chapter-content fade-in">
+                    <h1><i class="fas fa-book-open mr-3"></i>Agila Subic Facility Management Handbook</h1>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8">
+                        <h2 class="text-xl font-semibold text-blue-800 dark:text-blue-200 mb-2">Welcome to Your Comprehensive Guide</h2>
+                        <p class="text-blue-700 dark:text-blue-300">This handbook contains all essential information for facility management procedures, requests, and compliance requirements at Agila Subic.</p>
+                    </div>
+
+                    <h2>What's Inside This Handbook</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mt-6">
+                        <div class="feature-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl">
+                            <div class="flex items-start">
+                                <div class="feature-icon text-3xl mr-4 mt-1">
+                                    <i class="fas fa-user-check"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold mb-2 text-lg">Visitor Entry & Gatepass</h3>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Complete procedures for visitor requests, deliveries, and material pull-out processes through FacilityBot.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="feature-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl">
+                            <div class="flex items-start">
+                                <div class="feature-icon text-3xl mr-4 mt-1">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold mb-2 text-lg">Service Request</h3>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">How to submit service requests for Engineering, F&ES, or Security assistance with proper documentation and tracking.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="feature-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl">
+                            <div class="flex items-start">
+                                <div class="feature-icon text-3xl mr-4 mt-1">
+                                    <i class="fas fa-hard-hat"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold mb-2 text-lg">HSE Induction</h3>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Mandatory Health, Safety, and Environment orientation requirements for contractors and visitors.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="feature-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl">
+                            <div class="flex items-start">
+                                <div class="feature-icon text-3xl mr-4 mt-1">
+                                    <i class="fas fa-question-circle"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold mb-2 text-lg">FAQ Section</h3>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Comprehensive answers to common questions for subtenants, contractors, vendors, and suppliers.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 info-box p-6 rounded-xl">
+                        <h3 class="text-lg font-semibold mb-4"><i class="fas fa-lightbulb mr-2 text-yellow-500"></i>Quick Navigation Tips</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                                    <i class="fas fa-bars text-white text-sm"></i>
+                                </div>
+                                <span><strong>Use the sidebar</strong> to jump between sections quickly</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
+                                    <i class="fas fa-search text-white text-sm"></i>
+                                </div>
+                                <span><strong>Search FAQs</strong> using the search bar in the FAQ section</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-success rounded-full flex items-center justify-center">
+                                    <i class="fas fa-phone text-white text-sm"></i>
+                                </div>
+                                <span><strong>Contact:</strong> 0918-912-4533 / 0977-110-0375</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
+                                    <i class="fab fa-viber text-white text-sm"></i>
+                                </div>
+                                <span><strong>All requests</strong> via FacilityBot on Viber</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Card -->
+                    <div class="contact-card mt-8 p-6 rounded-xl relative z-10">
+                        <div class="grid md:grid-cols-2 gap-6 items-center">
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">🚀 Ready to Get Started?</h3>
+                                <p class="opacity-90 mb-4">Access FacilityBot on Viber to submit your requests</p>
+                                
+                                <div class="space-y-2 text-sm opacity-80">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="bg-white bg-opacity-20 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">1</span>
+                                        <span><strong>Android:</strong> Download QR reader app</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="bg-white bg-opacity-20 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">1</span>
+                                        <span><strong>iPhone/iPad:</strong> Open camera app</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="bg-white bg-opacity-20 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">2</span>
+                                        <span>Scan QR Code → Opens Viber</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="bg-white bg-opacity-20 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">3</span>
+                                        <span>Click "Get started" or Say "Hi"</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex flex-col items-center">
+                                <div class="bg-white p-4 rounded-xl shadow-lg qr-clickable">
+                                    <img 
+                                        src="https://pfst.cf2.poecdn.net/base/image/a464aacf45561ba0aca728e63a42ddaa96cd3b4793284d3000b7a6fc6c6b4ebc?w=529&h=628" 
+                                        alt="AgilaSubic FacilityBot QR Code" 
+                                        class="w-32 h-32 object-contain qr-code"
+                                        style="image-rendering: crisp-edges;"
+                                        title="Click to enlarge QR code"
+                                    >
+                                </div>
+                                <p class="text-xs opacity-70 mt-2 text-center">Scan to access<br>AgilaSubic FacilityBot<br><em>Click to enlarge</em></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Visitor Entry Section -->
+                <section id="visitor-section" class="chapter-content fade-in hidden">
+                    <h1><i class="fas fa-user-check mr-3"></i>Visitor Entry Request & Gatepass</h1>
+                    
+                    <p>To maintain security, safety, and efficient operations within our facility, all contractors and visitors are required to follow a standardized process when entering the premises or bringing in/out materials and equipment.</p>
+
+                    <p>The Visitor Entry Request and Gatepass for Delivery and Pull-Out are managed through <strong>FacilityBot</strong>, our centralized request and tracking system. These requests ensure that proper authorization is granted before any external individual or item is allowed entry or exit.</p>
+
+                    <h2>System Benefits</h2>
+                    <ul>
+                        <li>Monitor visitor access to the facility</li>
+                        <li>Track deliveries and pull-out of equipment or materials</li>
+                        <li>Secure approval from relevant departments</li>
+                        <li>Maintain records for audit and compliance purposes</li>
+                    </ul>
+
+                    <p>Requestors must complete the appropriate form in FacilityBot by scanning the QR Code using QR Code application or Viber QR itself. You can gain access by providing details such as purpose of visit or delivery, contact information like email address, items for delivery/pull-out, and expected entry/exit times.</p>
+
+                    <h2>Step-by-Step Process</h2>
+
+                    <h3>Getting Started</h3>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl mb-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-semibold text-lg">📱 Access FacilityBot</h4>
+                            <div class="bg-white p-2 rounded-lg shadow-md qr-clickable">
+                                <img 
+                                    src="https://pfst.cf2.poecdn.net/base/image/a464aacf45561ba0aca728e63a42ddaa96cd3b4793284d3000b7a6fc6c6b4ebc?w=529&h=628" 
+                                    alt="AgilaSubic FacilityBot QR Code" 
+                                    class="w-16 h-16 object-contain qr-code"
+                                    style="image-rendering: crisp-edges;"
+                                    title="Click to enlarge QR code"
+                                >
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <p class="font-medium mb-2">📱 <strong>Android Users:</strong></p>
+                                <p class="text-gray-600 dark:text-gray-400">Download QR code reader app, then scan</p>
+                            </div>
+                            <div>
+                                <p class="font-medium mb-2">📱 <strong>iPhone/iPad Users:</strong></p>
+                                <p class="text-gray-600 dark:text-gray-400">Open camera app, then scan</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <ol>
+                        <li>After scanning the QR Code, it will redirect you to <strong>Agila Subic Bot</strong> using Viber application</li>
+                        <li>Select <strong>Service Request</strong></li>
+                        <li>Under Service Request → <strong>"Create Service Request"</strong></li>
+                        <li>Once you select "Create Service Request", it will direct you to the Online Webpage Form</li>
+                    </ol>
+
+                    <h3>A. For Visitor Entry Request / Delivery</h3>
+                    <p>This is for your <strong>Ingress/Entrance</strong>. If you need to deliver items, fill up the Gatepass section as well. If none, you may proceed in submitting your request with the following details:</p>
+                    
+                    <ul>
+                        <li>Requestor's Name</li>
+                        <li>Requestor's Company Name</li>
+                        <li>Requestor's Email Address</li>
+                        <li>Purpose of Visit (Specify or Elaborate your purpose of visit)</li>
+                        <li>List of Names of Visitors</li>
+                        <li>Vehicle Type & License Plate (ex. ABC 1245)</li>
+                        <li>Expected Date & Time of Arrival / Visit / Entry</li>
+                    </ul>
+
+                    <h3>B. For Gatepass for Pull-out</h3>
+                    <p>This is for your <strong>Egress/Exit</strong>. You may upload the file on the "Attach the list of equipment to be pull-out (max 10 MB each) - Image file only" or in PDF file.</p>
+                    
+                    <ul>
+                        <li>Please input your email below to monitor the approval status</li>
+                        <li>Bearer/Requestor</li>
+                        <li>Company Name</li>
+                        <li>Date / Time</li>
+                        <li>Input the Approved Case ID of Gate Pass Delivery - You may input the Case ID of your Ingress so our security can verify</li>
+                        <li>Reason of Pull-Out</li>
+                    </ul>
+
+                    <h3>Submission and Follow-up</h3>
+                    <ol start="5">
+                        <li>Once you fill out the form, select <strong>"Submit"</strong></li>
+                        <li>You may follow up your request using the <strong>"Case ID"</strong></li>
+                        <li>You may locate your Case ID in your Viber, Agila Subic Bot or after submitting the request</li>
+                        <li>You may also view the status by clicking <strong>"View my Request"</strong></li>
+                    </ol>
+
+                    <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-4 mt-6">
+                        <h3 class="text-yellow-800 dark:text-yellow-200 font-semibold mb-2">Important Notes</h3>
+                        <ul class="text-yellow-700 dark:text-yellow-300 space-y-1">
+                            <li>• Present your <strong>Case ID</strong> to Security for quick verification</li>
+                            <li>• Check the status: pending, processing, or completed</li>
+                            <li>• Once completed, our security will verify it</li>
+                        </ul>
+                    </div>
+
+                    <h3>Need Help?</h3>
+                    <p>For follow up, you may also proceed in clicking <strong>"Chat with Staff"</strong> on the main menu so the administrator will be notified or directly message through Viber: <strong>0918-912-4533 / 0977-110-0375</strong></p>
+                </section>
+
+                <!-- Service Request Section -->
+                <section id="service-section" class="chapter-content fade-in hidden">
+                    <h1><i class="fas fa-tools mr-3"></i>Service Request</h1>
+                    
+                    <p>To maintain security, safety, and efficient operations, all concerns requiring assistance from the Engineering Team, F&ES, or Security must be formally submitted through our Service Request system in FacilityBot.</p>
+
+                    <h2>System Benefits</h2>
+                    <p>By centralizing all requests in one platform, we ensure that:</p>
+                    <ul>
+                        <li>Every request is properly documented with complete details from the requestor</li>
+                        <li>Tasks are accurately routed to the appropriate department, avoiding delays or miscommunication</li>
+                        <li>All requests are monitored in real time, allowing requestors to track progress and receive timely updates</li>
+                        <li>Issues are prioritized based on urgency (Low, Medium, High, or Critical) to ensure that critical matters are addressed immediately</li>
+                        <li>Supporting documents such as images or PDFs can be uploaded, providing clearer context for faster resolution</li>
+                        <li>A complete record of requests and actions taken is kept for accountability, audit, and future reference</li>
+                    </ul>
+
+                    <h2>Step-by-Step Process</h2>
+
+                    <h3>Getting Started</h3>
+                    <ol>
+                        <li>After scanning the QR Code, it will redirect you to <strong>Agila Subic Bot</strong> using Viber application</li>
+                        <li>Select <strong>Service Request</strong></li>
+                        <li>Under Service Request → <strong>"Create Service Request"</strong></li>
+                        <li>Once you select "Create Service Request", it will direct you to the Online Webpage Form</li>
+                    </ol>
+
+                    <h3>Required Form Details</h3>
+                    <p>Fill out the form with the following details:</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-4 mt-4">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h4 class="font-semibold mb-2">Requestor Information</h4>
+                            <ul class="text-sm">
+                                <li>• Name</li>
+                                <li>• Contact No.</li>
+                                <li>• Company</li>
+                                <li>• Email</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h4 class="font-semibold mb-2">Request Details</h4>
+                            <ul class="text-sm">
+                                <li>• Nature of Work</li>
+                                <li>• Details of Concern</li>
+                                <li>• Priority Level</li>
+                                <li>• Fault Tag</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h4 class="font-semibold mb-2">Schedule & Location</h4>
+                            <ul class="text-sm">
+                                <li>• Preferred date and time</li>
+                                <li>• Exact site or area</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h4 class="font-semibold mb-2">Supporting Documents</h4>
+                            <ul class="text-sm">
+                                <li>• Photos or PDF files</li>
+                                <li>• Additional references</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Nature of Work Examples</h3>
+                    <ul>
+                        <li><strong>Power Supply</strong> - Electrical issues, outages, wiring problems</li>
+                        <li><strong>Water Supply</strong> - Plumbing, leaks, water pressure issues</li>
+                        <li><strong>Lift Station</strong> - Elevator maintenance and repairs</li>
+                        <li><strong>Support Service</strong> - Ambulance, Fire Truck, Training</li>
+                        <li><strong>Others</strong> - Any other facility-related concerns</li>
+                    </ul>
+
+                    <h3>Priority Levels</h3>
+                    <div class="grid md:grid-cols-4 gap-2 mt-4">
+                        <div class="bg-green-100 dark:bg-green-900/30 p-3 rounded text-center">
+                            <div class="font-semibold text-green-800 dark:text-green-200">Low</div>
+                            <div class="text-xs text-green-600 dark:text-green-300">Non-urgent</div>
+                        </div>
+                        <div class="bg-yellow-100 dark:bg-yellow-900/30 p-3 rounded text-center">
+                            <div class="font-semibold text-yellow-800 dark:text-yellow-200">Medium</div>
+                            <div class="text-xs text-yellow-600 dark:text-yellow-300">Moderate urgency</div>
+                        </div>
+                        <div class="bg-orange-100 dark:bg-orange-900/30 p-3 rounded text-center">
+                            <div class="font-semibold text-orange-800 dark:text-orange-200">High</div>
+                            <div class="text-xs text-orange-600 dark:text-orange-300">Urgent attention</div>
+                        </div>
+                        <div class="bg-red-100 dark:bg-red-900/30 p-3 rounded text-center">
+                            <div class="font-semibold text-red-800 dark:text-red-200">Critical</div>
+                            <div class="text-xs text-red-600 dark:text-red-300">Immediate action</div>
+                        </div>
+                    </div>
+
+                    <h3>Submission and Tracking</h3>
+                    <ol start="5">
+                        <li>Once you fill out the form, select <strong>"Submit"</strong></li>
+                        <li>You may follow up your request using the <strong>"Case ID"</strong></li>
+                        <li>You may locate your Case ID in your Viber, Agila Subic Bot or after submitting the request</li>
+                        <li>You may also view the status by clicking <strong>"View my Request"</strong></li>
+                    </ol>
+
+                    <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 mt-6">
+                        <h3 class="text-blue-800 dark:text-blue-200 font-semibold mb-2">How the System Helps</h3>
+                        <ul class="text-blue-700 dark:text-blue-300 space-y-1">
+                            <li>• Assign the request to the right department (Engineering, F&ES, or Security)</li>
+                            <li>• Prioritize tasks based on urgency</li>
+                            <li>• Track progress and completion status</li>
+                            <li>• Maintain clear records for accountability and audit purposes</li>
+                        </ul>
+                    </div>
+
+                    <h3>Need Help?</h3>
+                    <p>For follow up, you may also proceed in clicking <strong>"Chat with Staff"</strong> on the main menu so the administrator will be notified or directly message through Viber: <strong>0918-912-4533 / 0977-110-0375</strong></p>
+                </section>
+
+                <!-- HSE Induction Section -->
+                <section id="hse-section" class="chapter-content fade-in hidden">
+                    <h1><i class="fas fa-hard-hat mr-3"></i>Health, Safety, and Environment (HSE) Induction</h1>
+                    
+                    <p>The Health, Safety, and Environment (HSE) Induction is a <strong>mandatory orientation</strong> designed to familiarize all personnel, contractors, and visitors with the safety policies, emergency procedures, and environmental protocols within our facility.</p>
+
+                    <p>This induction ensures that everyone entering the site understands their responsibilities in maintaining a safe and secure working environment. It aligns with our commitment to uphold the highest standards of occupational health, safety, and environmental protection.</p>
+
+                    <h2>Objectives</h2>
+                    <p>Through the HSE Induction, we aim to:</p>
+                    <ul>
+                        <li>Promote a strong safety culture across all levels</li>
+                        <li>Minimize risks and prevent workplace incidents</li>
+                        <li>Ensure compliance with legal and regulatory requirements</li>
+                        <li>Protect the well-being of our people, property, and the environment</li>
+                    </ul>
+
+                    <div class="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-4 mt-6 mb-6">
+                        <h3 class="text-red-800 dark:text-red-200 font-semibold mb-2">Mandatory Requirement</h3>
+                        <p class="text-red-700 dark:text-red-300">All contractors and visitors are <strong>required to complete</strong> the HSE Induction before performing any activity within the facility.</p>
+                    </div>
+
+                    <h2>Step-by-Step Process</h2>
+
+                    <h3>Submitting HSE Induction Request</h3>
+                    <ol>
+                        <li>After scanning the QR Code, it will redirect you to <strong>Agila Subic Bot</strong> using Viber application</li>
+                        <li>Select <strong>Service Request</strong></li>
+                        <li>Under Service Request → <strong>"Create Service Request"</strong></li>
+                        <li>Once you select "Create Service Request", it will direct you to the Online Webpage Form</li>
+                        <li>Choose <strong>HSE Induction</strong> and fill up the form</li>
+                        <li>Once you fill out the form, select <strong>"Submit"</strong></li>
+                    </ol>
+
+                    <div class="bg-orange-50 dark:bg-orange-900/20 border-l-4 border-orange-500 p-4 mt-6">
+                        <h3 class="text-orange-800 dark:text-orange-200 font-semibold mb-2">Important Notice</h3>
+                        <p class="text-orange-700 dark:text-orange-300">Please be informed that <strong>each request must be submitted individually</strong>, as this will serve as the attendance record.</p>
+                    </div>
+
+                    <h3>Request Status Meanings</h3>
+                    <div class="grid md:grid-cols-3 gap-4 mt-6">
+                        <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg border border-yellow-200 dark:border-yellow-700">
+                            <h4 class="font-semibold text-yellow-800 dark:text-yellow-200 mb-2">Processing</h4>
+                            <p class="text-sm text-yellow-700 dark:text-yellow-300">HSE Personnel has acknowledged the request and will inform you of the induction location.</p>
+                        </div>
+                        
+                        <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg border border-green-200 dark:border-green-700">
+                            <h4 class="font-semibold text-green-800 dark:text-green-200 mb-2">Completed</h4>
+                            <p class="text-sm text-green-700 dark:text-green-300">The induction has been successfully conducted.</p>
+                        </div>
+                        
+                        <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg border border-red-200 dark:border-red-700">
+                            <h4 class="font-semibold text-red-800 dark:text-red-200 mb-2">Cancelled</h4>
+                            <p class="text-sm text-red-700 dark:text-red-300">The person did not attend the induction.</p>
+                        </div>
+                    </div>
+
+                    <h3>Coordination and Scheduling</h3>
+                    <ol start="7">
+                        <li>Once your request has been submitted, an <strong>HSE Personnel will contact you</strong> to coordinate the schedule and location of your induction</li>
+                        <li>The induction will be based on the date and time you provided in FacilityBot request</li>
+                        <li>Please ensure your <strong>contact details and submitted schedule are accurate</strong> to avoid delays</li>
+                        <li>You may also view the status by clicking <strong>"View my Request"</strong></li>
+                    </ol>
+
+                    <h3>Tracking Your Request</h3>
+                    <p>You can track your HSE Induction request status through:</p>
+                    <ul>
+                        <li><strong>Case ID</strong> - Present this to Security for quick verification</li>
+                        <li><strong>"View my Request"</strong> - Check if your request is pending, processing, or completed</li>
+                        <li><strong>Viber notifications</strong> - Receive updates through Agila Subic Bot</li>
+                    </ul>
+
+                    <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 mt-6">
+                        <h3 class="text-blue-800 dark:text-blue-200 font-semibold mb-2">Who Needs HSE Induction?</h3>
+                        <ul class="text-blue-700 dark:text-blue-300 space-y-1">
+                            <li>• <strong>All contractors</strong> working on-site</li>
+                            <li>• <strong>Visitors</strong> who will stay frequently or for extended periods</li>
+                            <li>• <strong>Vendors and suppliers</strong> with regular facility access</li>
+                            <li>• <strong>Any personnel</strong> performing activities within the facility</li>
+                        </ul>
+                    </div>
+
+                    <h3>Need Help?</h3>
+                    <p>For follow up, you may also proceed in clicking <strong>"Chat with Staff"</strong> on the main menu so the administrator will be notified or directly message through Viber: <strong>0918-912-4533 / 0977-110-0375</strong></p>
+                </section>
+
+                <!-- FAQ Section -->
+                <section id="faq-section" class="chapter-content fade-in hidden">
+                    <h1><i class="fas fa-question-circle mr-3"></i>Frequently Asked Questions</h1>
+                    
+                    <!-- Search Bar -->
+                    <div class="mb-8">
+                        <div class="relative">
+                            <input 
+                                type="text" 
+                                id="faqSearch" 
+                                placeholder="Search FAQs..." 
+                                class="w-full px-4 py-3 pl-12 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                            >
+                            <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            <button 
+                                id="clearSearch" 
+                                class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hidden"
+                            >
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Categories -->
+                    <div id="faqContent">
+                        
+                        <!-- For Subtenants -->
+                        <div class="faq-category mb-12">
+                            <h2 class="mb-6"><i class="fas fa-building mr-3"></i>For Subtenants</h2>
+                            
+                            <div class="space-y-6">
+                                <!-- Service Requests -->
+                                <div class="faq-item bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                                    <div class="p-6">
+                                        <h3 class="mb-4"><i class="fas fa-tools mr-2"></i>Service Requests</h3>
+                                        
+                                        <div class="faq-qa mb-4">
+                                            <h4 class="font-semibold text-primary mb-2">How do I file a service request?</h4>
+                                            <p>Navigate to Agila Subic Bot → Menu → Service Request → Create Service Request → Select "Service Request". This allows users to file requests for repairs and maintenance.</p>
+                                        </div>
+                                        
+                                        <div class="faq-qa">
+                                            <h4 class="font-semibold text-primary mb-2">How do I view my service requests?</h4>
+                                            <p>Access via Agila Subic Bot → Menu → Service Request → View My Request to track the status of submitted requests.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Access Requests -->
+                                <div class="faq-item bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                                    <div class="p-6">
+                                        <h3 class="mb-4"><i class="fas fa-user-check mr-2"></i>Access Requests</h3>
+                                        
+                                        <div class="faq-qa mb-4">
+                                            <h4 class="font-semibold text-primary mb-2">How do I file an access request for visitors?</h4>
+                                            <p>Go to Agila Subic Bot → Menu → Service Request → Select "Visitor Entry Request / Delivery". This applies to guests, vendors, and contractors needing access.</p>
+                                        </div>
+                                        
+                                        <div class="faq-qa">
+                                            <h4 class="font-semibold text-primary mb-2">How do I track my access requests?</h4>
+                                            <p>Similar process as service requests - use "View My Request" to check the status.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Compliance Rules -->
+                                <div class="faq-item bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                                    <div class="p-6">
+                                        <h3 class="mb-4"><i class="fas fa-shield-alt mr-2"></i>Compliance Rules</h3>
+                                        
+                                        <div class="faq-qa mb-4">
+                                            <h4 class="font-semibold text-primary mb-2">What ID requirements must I follow?</h4>
+                                            <p>Always carry a valid Company ID or government-issued ID when on-site.</p>
+                                        </div>
+                                        
+                                        <div class="faq-qa mb-4">
+                                            <h4 class="font-semibold text-primary mb-2">What are the dress code and PPE requirements?</h4>
+                                            <p>Comply with dress code policies; proper Personal Protective Equipment (PPE) is required in operational zones.</p>
+                                        </div>
+                                        
+                                        <div class="faq-qa mb-4">
+                                            <h4 class="font-semibold text-primary mb-2">What about vehicle registration?</h4>
+                                            <p>Use registered plate numbers in all requests to avoid issues.</p>
+                                        </div>
+                                        
+                                        <div class="faq-qa">
+                                            <h4 class="font-semibold text-primary mb-2">What happens if I don't comply?</h4>
+                                            <p>Non-compliance can lead to entry denial or delays.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Gatepass Requests -->
+                                <div class="faq-item bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                                    <div class="p-6">
+                                        <h3 class="mb-4"><i class="fas fa-clipboard-list mr-2"></i>Gatepass Requests</h3>
+                                        
+                                        <div class="faq-qa">
+                                            <h4 class="font-semibold text-primary mb-2">How do I request a gatepass for material pull-out?</h4>
+                                            <p>Use the Agila Subic Bot to request a gatepass for material pull-outs. Ensure all details are accurate to avoid processing delays.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- HSE Induction -->
+                                <div class="faq-item bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                                    <div class="p-6">
+                                        <h3 class="mb-4"><i class="fas fa-hard-hat mr-2"></i>HSE Induction</h3>
+                                        
+                                        <div class="faq-qa mb-4">
+                                            <h4 class="font-semibold text-primary mb-2">Who needs HSE Induction?</h4>
+                                            <p>Mandatory for contractors working on-site and for visitors/vendors who will stay frequently or for extended periods.</p>
+                                        </div>
+                                        
+                                        <div class="faq-qa">
+                                            <h4 class="font-semibold text-primary mb-2">How do I schedule HSE Induction?</h4>
+                                            <p>Navigate to Agila Subic Bot → Menu → Service Request → Select "HSE Induction".</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Request Approvals -->
+                                <div class="faq-item bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                                    <div class="p-6">
+                                        <h3 class="mb-4"><i class="fas fa-check-circle mr-2"></i>Request Approvals</h3>
+                                        
+                                        <div class="faq-qa">
+                                            <h4 class="font-semibold text-primary mb-2">How are tenant requests approved?</h4>
+                                            <p>Tenant requests are initially reviewed by CBRE and finalized by Agila Subic to ensure compliance and safety.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- For Contractors/Vendors/Suppliers -->
+                        <div class="faq-category mb-12">
+                            <h2 class="mb-6"><i class="fas fa-users mr-3"></i>For Contractors/Vendors/Suppliers</h2>
+                            
+                            <div class="space-y-6">
+                                <!-- Work Access -->
+                                <div class="faq-item bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                                    <div class="p-6">
+                                        <h3 class="mb-4"><i class="fas fa-key mr-2"></i>Work Access</h3>
+                                        
+                                        <div class="faq-qa mb-4">
+                                            <h4 class="font-semibold text-primary mb-2">How do contractors request access?</h4>
+                                            <p>Contractors must be endorsed by the tenant to submit an access request via Agila Subic Bot (FacilityBot in Viber).</p>
+                                        </div>
+                                        
+                                        <div class="faq-qa">
+                                            <h4 class="font-semibold text-primary mb-2">Can contractors file their own requests?</h4>
+                                            <p>Yes, scanning a QR code allows contractors to file their own requests.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Compliance -->
+                                <div class="faq-item bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                                    <div class="p-6">
+                                        <h3 class="mb-4"><i class="fas fa-clipboard-check mr-2"></i>Compliance</h3>
+                                        
+                                        <div class="faq-qa mb-4">
+                                            <h4 class="font-semibold text-primary mb-2">What are the main compliance requirements?</h4>
+                                            <p>Process Visitor Entry Requests and Gatepasses online via FacilityBot. Always carry valid company or government-issued IDs. Undergo security checks at gate entry and exit.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Key Reminders -->
+                                <div class="faq-item bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                                    <div class="p-6">
+                                        <h3 class="mb-4"><i class="fas fa-exclamation-triangle mr-2"></i>Key Reminders</h3>
+                                        
+                                        <div class="faq-qa mb-4">
+                                            <h4 class="font-semibold text-primary mb-2">How far in advance should I file requests?</h4>
+                                            <p>Requests must be filed at least 1 day in advance to ensure processing.</p>
+                                        </div>
+                                        
+                                        <div class="faq-qa mb-4">
+                                            <h4 class="font-semibold text-primary mb-2">Are requests processed on weekends?</h4>
+                                            <p>Limited processing on weekends; plan requests accordingly.</p>
+                                        </div>
+                                        
+                                        <div class="faq-qa">
+                                            <h4 class="font-semibold text-primary mb-2">What should I bring to the gate?</h4>
+                                            <p>Keep copies of Case IDs for verification at the security gate.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Access Forms -->
+                                <div class="faq-item bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                                    <div class="p-6">
+                                        <h3 class="mb-4"><i class="fas fa-file-alt mr-2"></i>Access Forms</h3>
+                                        
+                                        <div class="faq-qa mb-4">
+                                            <h4 class="font-semibold text-primary mb-2">How do I submit Visitor Entry Request / Delivery?</h4>
+                                            <p>Go to Agila Subic Bot → Service Request → Create Service Request → Select "Visitor Entry Request / Delivery". Applicable for vendors and contractors.</p>
+                                        </div>
+                                        
+                                        <div class="faq-qa mb-4">
+                                            <h4 class="font-semibold text-primary mb-2">How do I submit Gatepass for Pull-Out?</h4>
+                                            <p>Similar process as above, ensuring compliance with guidelines.</p>
+                                        </div>
+                                        
+                                        <div class="faq-qa">
+                                            <h4 class="font-semibold text-primary mb-2">What about HSE Induction for contractors?</h4>
+                                            <p>Mandatory for on-site contractors; all participant names must be entered individually for attendance.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- PPE Requirements -->
+                                <div class="faq-item bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                                    <div class="p-6">
+                                        <h3 class="mb-4"><i class="fas fa-hard-hat mr-2"></i>PPE Requirements</h3>
+                                        
+                                        <div class="faq-qa mb-4">
+                                            <h4 class="font-semibold text-primary mb-2">What are the dress code requirements?</h4>
+                                            <p>Compliance with dress code and PPE is mandatory.</p>
+                                        </div>
+                                        
+                                        <div class="faq-qa">
+                                            <h4 class="font-semibold text-primary mb-2">What happens if I don't comply with PPE requirements?</h4>
+                                            <p>Entry may be denied for failure to adhere to PPE requirements.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Equipment & Vehicles -->
+                                <div class="faq-item bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                                    <div class="p-6">
+                                        <h3 class="mb-4"><i class="fas fa-truck mr-2"></i>Equipment & Vehicles</h3>
+                                        
+                                        <div class="faq-qa mb-4">
+                                            <h4 class="font-semibold text-primary mb-2">Do I need to declare tools and vehicles?</h4>
+                                            <p>Yes, all tools and vehicles must be declared in the request form.</p>
+                                        </div>
+                                        
+                                        <div class="faq-qa">
+                                            <h4 class="font-semibold text-primary mb-2">What happens if I don't declare items?</h4>
+                                            <p>Undeclared items may cause delays at the gate.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Schedule Information -->
+                        <div class="faq-category mb-12">
+                            <h2 class="mb-6"><i class="fas fa-calendar-alt mr-3"></i>Schedule Information</h2>
+                            
+                            <div class="space-y-6">
+                                <div class="faq-item bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                                    <div class="p-6">
+                                        <div class="faq-qa mb-4">
+                                            <h4 class="font-semibold text-primary mb-2">How long are visitor passes valid?</h4>
+                                            <p>Passes are valid for 3-7 days; requests must be filed at least 1 day in advance.</p>
+                                        </div>
+                                        
+                                        <div class="faq-qa mb-4">
+                                            <h4 class="font-semibold text-primary mb-2">What are the hours for Visitor Entry / Delivery?</h4>
+                                            <p>Monday to Saturday, 8:00 AM to 5:00 PM (No Sunday Delivery).</p>
+                                        </div>
+                                        
+                                        <div class="faq-qa">
+                                            <h4 class="font-semibold text-primary mb-2">What are the hours for Pull-Out of Materials/Equipment?</h4>
+                                            <p>Monday to Friday, 8:00 AM to 5:00 PM; Saturday, 8:00 AM to 12:00 PM (Half-day only). No Sunday Pull-Out.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Information -->
+                        <div class="faq-category">
+                            <h2 class="mb-6"><i class="fas fa-phone mr-3"></i>Contact Information</h2>
+                            
+                            <div class="faq-item bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                                <div class="p-6">
+                                    <div class="faq-qa">
+                                        <h4 class="font-semibold text-primary mb-2">Who can I contact for assistance?</h4>
+                                        <p>For help or inquiries, contact the Agila Facility Management System Specialist for support at:</p>
+                                        <div class="mt-3 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                                            <div class="grid md:grid-cols-2 gap-4 items-center">
+                                                <div>
+                                                    <p class="font-semibold mb-2">Contact Numbers:</p>
+                                                    <p>📱 0918-912-4533</p>
+                                                    <p>📱 0977-110-0375</p>
+                                                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Click "Chat with Staff" in Agila Subic Bot</p>
+                                                </div>
+                                                <div class="flex justify-center">
+                                                    <div class="bg-white p-2 rounded-lg shadow-md qr-clickable">
+                                                        <img 
+                                                            src="https://pfst.cf2.poecdn.net/base/image/a464aacf45561ba0aca728e63a42ddaa96cd3b4793284d3000b7a6fc6c6b4ebc?w=529&h=628" 
+                                                            alt="AgilaSubic FacilityBot QR Code" 
+                                                            class="w-16 h-16 object-contain qr-code"
+                                                            style="image-rendering: crisp-edges;"
+                                                            title="Click to enlarge QR code"
+                                                        >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- No Results Message -->
+                    <div id="noResults" class="hidden text-center py-12">
+                        <i class="fas fa-search text-6xl text-gray-300 dark:text-gray-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-500 dark:text-gray-400 mb-2">No results found</h3>
+                        <p class="text-gray-400 dark:text-gray-500">Try adjusting your search terms or browse all FAQs above.</p>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // QR Code Modal functionality
+        const qrModal = document.getElementById('qrModal');
+        const qrModalImage = document.getElementById('qrModalImage');
+        const qrModalClose = document.getElementById('qrModalClose');
+        const qrCodes = document.querySelectorAll('.qr-code');
+
+        // Add click event to all QR codes
+        qrCodes.forEach(qrCode => {
+            qrCode.addEventListener('click', () => {
+                qrModalImage.src = qrCode.src;
+                qrModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            });
+        });
+
+        // Close modal when clicking the close button
+        qrModalClose.addEventListener('click', () => {
+            qrModal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        });
+
+        // Close modal when clicking outside the modal content
+        qrModal.addEventListener('click', (e) => {
+            if (e.target === qrModal) {
+                qrModal.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && qrModal.classList.contains('active')) {
+                qrModal.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        });
+
+        // Navigation functionality
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('section');
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        // Handle navigation
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const sectionId = item.dataset.section;
+                
+                // Remove active class from all nav items
+                navItems.forEach(nav => nav.classList.remove('sidebar-active'));
+                
+                // Add active class to clicked item
+                item.classList.add('sidebar-active');
+                
+                // Hide all sections
+                sections.forEach(section => section.classList.add('hidden'));
+                
+                // Show target section
+                const targetSection = document.getElementById(`${sectionId}-section`);
+                if (targetSection) {
+                    targetSection.classList.remove('hidden');
+                    targetSection.classList.add('fade-in');
+                }
+
+                // Close mobile sidebar
+                if (window.innerWidth < 768) {
+                    sidebar.classList.add('-translate-x-full');
+                    overlay.classList.add('hidden');
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        });
+
+        // Close sidebar when clicking overlay
+        overlay.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        });
+
+        // FAQ Search functionality
+        const faqSearch = document.getElementById('faqSearch');
+        const clearSearch = document.getElementById('clearSearch');
+        const faqContent = document.getElementById('faqContent');
+        const noResults = document.getElementById('noResults');
+
+        function highlightText(text, searchTerm) {
+            if (!searchTerm) return text;
+            const regex = new RegExp(`(${searchTerm})`, 'gi');
+            return text.replace(regex, '<span class="search-highlight">$1</span>');
+        }
+
+        function searchFAQs() {
+            const searchTerm = faqSearch.value.toLowerCase().trim();
+            const faqCategories = document.querySelectorAll('.faq-category');
+            const faqItems = document.querySelectorAll('.faq-item');
+            const faqQAs = document.querySelectorAll('.faq-qa');
+            let hasResults = false;
+
+            if (searchTerm === '') {
+                // Show all content
+                faqCategories.forEach(category => category.style.display = 'block');
+                faqItems.forEach(item => item.style.display = 'block');
+                faqQAs.forEach(qa => qa.style.display = 'block');
+                faqContent.style.display = 'block';
+                noResults.classList.add('hidden');
+                clearSearch.classList.add('hidden');
+                
+                // Remove highlights
+                document.querySelectorAll('.search-highlight').forEach(highlight => {
+                    highlight.outerHTML = highlight.innerHTML;
+                });
+                return;
+            }
+
+            clearSearch.classList.remove('hidden');
+
+            // First, hide everything
+            faqCategories.forEach(category => category.style.display = 'none');
+            faqItems.forEach(item => item.style.display = 'none');
+            faqQAs.forEach(qa => qa.style.display = 'none');
+
+            // Search through FAQ content
+            faqQAs.forEach(qa => {
+                const question = qa.querySelector('h4').textContent.toLowerCase();
+                const answer = qa.querySelector('p').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    // Show this QA
+                    qa.style.display = 'block';
+                    
+                    // Show parent item
+                    const parentItem = qa.closest('.faq-item');
+                    if (parentItem) parentItem.style.display = 'block';
+                    
+                    // Show parent category
+                    const parentCategory = qa.closest('.faq-category');
+                    if (parentCategory) parentCategory.style.display = 'block';
+                    
+                    hasResults = true;
+                    
+                    // Highlight search terms
+                    const questionEl = qa.querySelector('h4');
+                    const answerEl = qa.querySelector('p');
+                    questionEl.innerHTML = highlightText(questionEl.textContent, searchTerm);
+                    answerEl.innerHTML = highlightText(answerEl.textContent, searchTerm);
+                }
+            });
+
+            // Show or hide no results message
+            if (hasResults) {
+                faqContent.style.display = 'block';
+                noResults.classList.add('hidden');
+            } else {
+                faqContent.style.display = 'none';
+                noResults.classList.remove('hidden');
+            }
+        }
+
+        // Search event listeners
+        faqSearch.addEventListener('input', searchFAQs);
+
+        clearSearch.addEventListener('click', () => {
+            faqSearch.value = '';
+            searchFAQs();
+            faqSearch.focus();
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
