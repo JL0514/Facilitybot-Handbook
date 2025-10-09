@@ -501,9 +501,214 @@
         .qr-clickable:hover::after {
             opacity: 1;
         }
+        
+        /* Chatbox Styles */
+        .chat-pulse {
+            animation: chatPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes chatPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
+        }
+        
+        .chat-message {
+            animation: slideInChat 0.3s ease-out;
+        }
+        
+        @keyframes slideInChat {
+            from { 
+                opacity: 0; 
+                transform: translateY(10px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        .user-message {
+            justify-content: flex-end;
+        }
+        
+        .user-message .bg-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        }
+        
+        .bot-message {
+            justify-content: flex-start;
+        }
+        
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+        
+        .typing-dot {
+            width: 4px;
+            height: 4px;
+            background: #6b7280;
+            border-radius: 50%;
+            animation: typingDots 1.4s ease-in-out infinite;
+        }
+        
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes typingDots {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+        
+        .quick-action-btn {
+            background: rgba(99, 102, 241, 0.1);
+            color: #6366f1;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .quick-action-btn:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+        
+        .dark .quick-action-btn {
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+        
+        .dark .quick-action-btn:hover {
+            background: rgba(99, 102, 241, 0.3);
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+        
+        #chatWindow {
+            transform: scale(0.95);
+            opacity: 0;
+            transition: all 0.2s ease;
+        }
+        
+        #chatWindow.show {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        /* Chatbox Styles */
+        .chat-pulse {
+            animation: chatPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes chatPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
+        }
+        
+        .chat-message {
+            animation: slideInChat 0.3s ease-out;
+        }
+        
+        @keyframes slideInChat {
+            from { 
+                opacity: 0; 
+                transform: translateY(10px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        .user-message {
+            justify-content: flex-end;
+        }
+        
+        .user-message .bg-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        }
+        
+        .bot-message {
+            justify-content: flex-start;
+        }
+        
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+        
+        .typing-dot {
+            width: 4px;
+            height: 4px;
+            background: #6b7280;
+            border-radius: 50%;
+            animation: typingDots 1.4s ease-in-out infinite;
+        }
+        
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes typingDots {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+        
+        .quick-action-btn {
+            background: rgba(99, 102, 241, 0.1);
+            color: #6366f1;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .quick-action-btn:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+        
+        .dark .quick-action-btn {
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+        
+        .dark .quick-action-btn:hover {
+            background: rgba(99, 102, 241, 0.3);
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+        
+        #chatWindow {
+            transform: scale(0.95);
+            opacity: 0;
+            transition: all 0.2s ease;
+        }
+        
+        #chatWindow.show {
+            transform: scale(1);
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+
     <!-- QR Code Modal -->
     <div id="qrModal" class="qr-modal">
         <div class="qr-modal-content">
@@ -1333,6 +1538,68 @@
         </main>
     </div>
 
+    <!-- Floating Chatbox -->
+    <div id="chatWidget" class="fixed bottom-6 right-6 z-50">
+        <!-- Chat Toggle Button -->
+        <button id="chatToggle" class="bg-gradient-to-r from-primary to-secondary text-white w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center chat-pulse">
+            <i class="fas fa-comments text-xl"></i>
+        </button>
+        
+        <!-- Chat Window -->
+        <div id="chatWindow" class="absolute bottom-16 right-0 w-80 h-96 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 hidden overflow-hidden">
+            <!-- Chat Header -->
+            <div class="bg-gradient-to-r from-primary to-secondary text-white p-4 flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-robot text-sm"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-sm">FacilityBot Assistant</h3>
+                        <p class="text-xs opacity-80">Ask me anything!</p>
+                    </div>
+                </div>
+                <button id="chatClose" class="text-white hover:bg-white hover:bg-opacity-20 rounded-full w-6 h-6 flex items-center justify-center">
+                    <i class="fas fa-times text-sm"></i>
+                </button>
+            </div>
+            
+            <!-- Chat Messages -->
+            <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-3 h-64">
+                <div class="chat-message bot-message">
+                    <div class="flex items-start space-x-2">
+                        <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-robot text-white text-xs"></i>
+                        </div>
+                        <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 max-w-xs">
+                            <p class="text-sm">Hi! I'm your FacilityBot Assistant. Ask me about visitor requests, service tickets, HSE induction, or any facility procedures!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chat Input -->
+            <div class="p-4 border-t border-gray-200 dark:border-gray-600">
+                <div class="flex space-x-2">
+                    <input 
+                        type="text" 
+                        id="chatInput" 
+                        placeholder="Type your question..."
+                        class="flex-1 text-base px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                    >
+                    <button id="chatSend" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors">
+                        <i class="fas fa-paper-plane text-sm"></i>
+                    </button>
+                </div>
+                <div id="quickActions" class="mt-2 flex flex-wrap gap-1">
+                    <button class="quick-action-btn" data-action="How do I submit a service request?">Service Request</button>
+                    <button class="quick-action-btn" data-action="How do I request visitor access?">Visitor Access</button>
+                    <button class="quick-action-btn" data-action="What is HSE Induction?">HSE Induction</button>
+                    <button class="quick-action-btn" data-action="Contact information">Contact Info</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Dark mode detection
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -1343,6 +1610,232 @@
                 document.documentElement.classList.add('dark');
             } else {
                 document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Chatbot Knowledge Base and Functions
+        const chatbotKnowledgeBase = {
+            greetings: [
+                "Hi! I'm your FacilityBot Assistant. How can I help you today?",
+                "Hello! What can I help you with regarding facility procedures?",
+                "Welcome! I'm here to assist you with FacilityBot questions."
+            ],
+            
+            farewell: [
+                "Goodbye! Feel free to ask if you need more help.",
+                "Have a great day! Contact us at 0918-912-4533 if you need further assistance.",
+                "Thank you! Don't hesitate to reach out if you have more questions."
+            ],
+
+            fallback: [
+                "I'm not sure about that specific question. For detailed assistance, please contact our staff at 0918-912-4533 or 0977-110-0375.",
+                "That's a great question! For the most accurate information, I recommend reaching out to our team directly.",
+                "I might not have the exact answer to that. Our staff can provide more detailed help - contact them through the 'Chat with Staff' option."
+            ],
+
+            responses: {
+                "service request": {
+                    keywords: ["service request", "service ticket", "maintenance", "repair", "submit request", "create request"],
+                    answer: "To submit a service request:\n1. Scan the QR code to access Agila Subic Bot on Viber\n2. Select 'Service Request'\n3. Choose 'Create Service Request'\n4. Fill out the form with your details, nature of work, and priority level\n5. Submit and track using your Case ID\n\nFor Engineering, F&ES, or Security assistance, this system ensures proper documentation and tracking."
+                },
+                
+                "visitor entry": {
+                    keywords: ["visitor", "entry", "access", "guest", "delivery", "visitor entry"],
+                    answer: "For visitor entry requests:\n1. Access FacilityBot via QR code on Viber\n2. Select 'Visitor Entry Request / Delivery'\n3. Provide: requestor details, company name, email, purpose of visit, visitor names, vehicle info, and expected arrival time\n4. Submit and receive a Case ID\n5. Present Case ID to Security for verification\n\nEntry hours: Monday-Saturday, 8:00 AM to 5:00 PM (No Sunday delivery)."
+                },
+                
+                "hse induction": {
+                    keywords: ["hse", "induction", "safety", "health", "environment", "orientation"],
+                    answer: "HSE Induction is MANDATORY for all contractors and frequent visitors:\n1. Submit request via FacilityBot → Service Request → 'HSE Induction'\n2. Each person must submit individually for attendance records\n3. HSE Personnel will contact you for scheduling\n4. Track status: Processing → Completed/Cancelled\n\nThis ensures compliance with safety policies and emergency procedures."
+                },
+                
+                "gatepass": {
+                    keywords: ["gatepass", "pull-out", "pullout", "material", "equipment", "egress", "exit"],
+                    answer: "For Gatepass Pull-out requests:\n1. Use FacilityBot to submit pull-out request\n2. Include: email, bearer/requestor, company, date/time, approved Case ID from entry, reason for pull-out\n3. Upload equipment list (image/PDF, max 10MB)\n4. Submit and track via Case ID\n\nPull-out hours: Mon-Fri 8AM-5PM, Saturday 8AM-12PM (No Sunday pull-out)."
+                },
+                
+                "contact": {
+                    keywords: ["contact", "phone", "number", "help", "support", "staff", "call"],
+                    answer: "Contact Information:\n📱 Phone: 0918-912-4533 / 0977-110-0375\n💬 Via FacilityBot: Click 'Chat with Staff' in the main menu\n📧 Email support available through the system\n\nFor urgent matters, call directly. For routine inquiries, use the chat feature in FacilityBot."
+                },
+                
+                "hours": {
+                    keywords: ["hours", "time", "schedule", "when", "operating", "open"],
+                    answer: "Operating Hours:\n\n📥 Visitor Entry/Delivery:\nMonday-Saturday: 8:00 AM - 5:00 PM\n(No Sunday delivery)\n\n📤 Material Pull-out:\nMonday-Friday: 8:00 AM - 5:00 PM\nSaturday: 8:00 AM - 12:00 PM\n(No Sunday pull-out)\n\nRequests must be filed at least 1 day in advance."
+                },
+                
+                "qr code": {
+                    keywords: ["qr", "qr code", "scan", "viber", "access", "facilitybot"],
+                    answer: "To access FacilityBot:\n📱 Android: Download QR reader app, then scan\n📱 iPhone/iPad: Open camera app, then scan\n\nThe QR code will redirect you to Agila Subic Bot on Viber. You can find QR codes throughout this handbook - just click on any QR code image to enlarge it."
+                },
+                
+                "case id": {
+                    keywords: ["case id", "caseid", "track", "status", "follow up"],
+                    answer: "Your Case ID is important for tracking:\n• Generated after submitting any request\n• Found in your Viber notifications\n• Use it to track status via 'View my Request'\n• Present to Security for verification\n• Check status: pending → processing → completed\n\nAlways keep your Case ID for follow-up purposes."
+                },
+                
+                "ppe": {
+                    keywords: ["ppe", "safety equipment", "helmet", "dress code", "protective equipment"],
+                    answer: "PPE Requirements:\n• Mandatory in all operational zones\n• Proper dress code compliance required\n• Valid Company ID or government-issued ID required\n• Entry may be denied for non-compliance\n• All tools and vehicles must be declared\n\nContractors and visitors must follow all safety protocols."
+                },
+                
+                "contractors": {
+                    keywords: ["contractor", "vendor", "supplier", "endorsement"],
+                    answer: "For Contractors/Vendors/Suppliers:\n• Must be endorsed by tenant for access\n• Can file own requests via QR code\n• HSE Induction mandatory for on-site work\n• Must declare all tools and vehicles\n• Follow same process: FacilityBot → Service Request\n• Requests processed at least 1 day in advance"
+                }
+            }
+        };
+
+        function findBestResponse(userInput) {
+            const input = userInput.toLowerCase();
+            
+            // Check for greetings
+            if (input.match(/\b(hi|hello|hey|good morning|good afternoon|good evening)\b/)) {
+                return chatbotKnowledgeBase.greetings[Math.floor(Math.random() * chatbotKnowledgeBase.greetings.length)];
+            }
+            
+            // Check for farewell
+            if (input.match(/\b(bye|goodbye|thank you|thanks|see you)\b/)) {
+                return chatbotKnowledgeBase.farewell[Math.floor(Math.random() * chatbotKnowledgeBase.farewell.length)];
+            }
+
+            // Search through knowledge base
+            let bestMatch = null;
+            let highestScore = 0;
+
+            for (const [topic, data] of Object.entries(chatbotKnowledgeBase.responses)) {
+                let score = 0;
+                for (const keyword of data.keywords) {
+                    if (input.includes(keyword)) {
+                        score += keyword.length; // Longer matches get higher scores
+                    }
+                }
+                if (score > highestScore) {
+                    highestScore = score;
+                    bestMatch = data.answer;
+                }
+            }
+
+            return bestMatch || chatbotKnowledgeBase.fallback[Math.floor(Math.random() * chatbotKnowledgeBase.fallback.length)];
+        }
+
+        // Chatbox functionality
+        const chatToggle = document.getElementById('chatToggle');
+        const chatWindow = document.getElementById('chatWindow');
+        const chatClose = document.getElementById('chatClose');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const chatSend = document.getElementById('chatSend');
+        const quickActionBtns = document.querySelectorAll('.quick-action-btn');
+
+        let chatOpen = false;
+
+        function toggleChat() {
+            chatOpen = !chatOpen;
+            if (chatOpen) {
+                chatWindow.classList.remove('hidden');
+                setTimeout(() => chatWindow.classList.add('show'), 10);
+                chatInput.focus();
+            } else {
+                chatWindow.classList.remove('show');
+                setTimeout(() => chatWindow.classList.add('hidden'), 200);
+            }
+        }
+
+        function addMessage(message, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${isUser ? 'user-message' : 'bot-message'}`;
+            
+            if (isUser) {
+                messageDiv.innerHTML = `
+                    <div class="flex items-start space-x-2 justify-end">
+                        <div class="bg-primary text-white rounded-lg p-3 max-w-xs">
+                            <p class="text-sm">${message}</p>
+                        </div>
+                        <div class="w-6 h-6 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-user text-xs"></i>
+                        </div>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="flex items-start space-x-2">
+                        <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-robot text-white text-xs"></i>
+                        </div>
+                        <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 max-w-xs">
+                            <p class="text-sm whitespace-pre-line">${message}</p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'chat-message bot-message typing-indicator-msg';
+            typingDiv.innerHTML = `
+                <div class="flex items-start space-x-2">
+                    <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-robot text-white text-xs"></i>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-3">
+                        <div class="typing-indicator">
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            return typingDiv;
+        }
+
+        function sendMessage(message) {
+            if (!message.trim()) return;
+            
+            addMessage(message, true);
+            chatInput.value = '';
+            
+            const typingIndicator = showTypingIndicator();
+            
+            setTimeout(() => {
+                typingIndicator.remove();
+                const response = findBestResponse(message);
+                addMessage(response);
+            }, 1000 + Math.random() * 1000); // Random delay between 1-2 seconds
+        }
+
+        // Event listeners
+        chatToggle.addEventListener('click', toggleChat);
+        chatClose.addEventListener('click', toggleChat);
+
+        chatSend.addEventListener('click', () => {
+            sendMessage(chatInput.value);
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage(chatInput.value);
+            }
+        });
+
+        quickActionBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const action = btn.dataset.action;
+                sendMessage(action);
+            });
+        });
+
+        // Close chat when clicking outside
+        document.addEventListener('click', (e) => {
+            if (chatOpen && !document.getElementById('chatWidget').contains(e.target)) {
+                toggleChat();
             }
         });
 
